@@ -11,51 +11,51 @@ namespace CORE
     {
         // -- TYPES
 
-        public delegate bool CAN_ENTER_STATE_FUNCTION(
+        public delegate bool CAN_ENTER_STATE_DELEGATE(
             STATE old_state,
             STATE new_state
             );
 
         // ~~
 
-        public delegate bool CAN_EXIT_STATE_FUNCTION(
+        public delegate bool CAN_EXIT_STATE_DELEGATE(
             STATE old_state,
             STATE new_state
             );
 
         // ~~
 
-        public delegate void ENTER_STATE_FUNCTION(
+        public delegate void ENTER_STATE_DELEGATE(
             STATE old_state,
             STATE new_state
             );
 
         // ~~
 
-        public delegate void UPDATE_FUNCTION(
+        public delegate void UPDATE_DELEGATE(
             );
 
         // ~~
 
-        public delegate void EXIT_STATE_FUNCTION(
+        public delegate void EXIT_STATE_DELEGATE(
             STATE old_state,
             STATE new_state
             );
 
         // -- ATTRIBUTES
 
-        public CAN_ENTER_STATE_FUNCTION
-            CanEnterStateFunction;
-        public CAN_EXIT_STATE_FUNCTION
-            CanExitStateFunction;
-        public ENTER_STATE_FUNCTION
-            EnterStateFunction;
-        public UPDATE_FUNCTION
-            BeginUpdateFunction,
-            UpdateFunction,
-            EndUpdateFunction;
-        public EXIT_STATE_FUNCTION
-            ExitStateFunction;
+        public CAN_ENTER_STATE_DELEGATE
+            CanEnterStateDelegate;
+        public CAN_EXIT_STATE_DELEGATE
+            CanExitStateDelegate;
+        public ENTER_STATE_DELEGATE
+            EnterStateDelegate;
+        public UPDATE_DELEGATE
+            BeginUpdateDelegate,
+            UpdateDelegate,
+            EndUpdateDelegate;
+        public EXIT_STATE_DELEGATE
+            ExitStateDelegate;
 
         // -- CONSTRUCTORS
 
@@ -64,13 +64,13 @@ namespace CORE
             base()
         {
             State = null;
-            CanEnterStateFunction = null;
-            CanExitStateFunction = null;
-            EnterStateFunction = null;
-            BeginUpdateFunction = null;
-            UpdateFunction = null;
-            EndUpdateFunction = null;
-            ExitStateFunction = null;
+            CanEnterStateDelegate = null;
+            CanExitStateDelegate = null;
+            EnterStateDelegate = null;
+            BeginUpdateDelegate = null;
+            UpdateDelegate = null;
+            EndUpdateDelegate = null;
+            ExitStateDelegate = null;
         }
 
         // ~~
@@ -80,13 +80,13 @@ namespace CORE
             ) :
             base( state )
         {
-            CanEnterStateFunction = null;
-            CanExitStateFunction = null;
-            EnterStateFunction = null;
-            BeginUpdateFunction = null;
-            UpdateFunction = null;
-            EndUpdateFunction = null;
-            ExitStateFunction = null;
+            CanEnterStateDelegate = null;
+            CanExitStateDelegate = null;
+            EnterStateDelegate = null;
+            BeginUpdateDelegate = null;
+            UpdateDelegate = null;
+            EndUpdateDelegate = null;
+            ExitStateDelegate = null;
         }
 
         // ~~
@@ -96,132 +96,132 @@ namespace CORE
             ) :
             base( name )
         {
-            CanEnterStateFunction = null;
-            CanExitStateFunction = null;
-            EnterStateFunction = null;
-            BeginUpdateFunction = null;
-            UpdateFunction = null;
-            EndUpdateFunction = null;
-            ExitStateFunction = null;
+            CanEnterStateDelegate = null;
+            CanExitStateDelegate = null;
+            EnterStateDelegate = null;
+            BeginUpdateDelegate = null;
+            UpdateDelegate = null;
+            EndUpdateDelegate = null;
+            ExitStateDelegate = null;
         }
 
         // ~~
 
         public DYNAMIC_STATE(
             string name,
-            UPDATE_FUNCTION update_function = null
+            UPDATE_DELEGATE update_delegate = null
             ) :
             base( name )
         {
-            CanEnterStateFunction = null;
-            CanExitStateFunction = null;
-            EnterStateFunction = null;
-            BeginUpdateFunction = null;
-            UpdateFunction = update_function;
-            EndUpdateFunction = null;
-            ExitStateFunction = null;
+            CanEnterStateDelegate = null;
+            CanExitStateDelegate = null;
+            EnterStateDelegate = null;
+            BeginUpdateDelegate = null;
+            UpdateDelegate = update_delegate;
+            EndUpdateDelegate = null;
+            ExitStateDelegate = null;
         }
 
         // ~~
 
         public DYNAMIC_STATE(
             string name,
-            ENTER_STATE_FUNCTION enter_state_function = null,
-            UPDATE_FUNCTION update_function = null
+            ENTER_STATE_DELEGATE enter_state_delegate = null,
+            UPDATE_DELEGATE update_delegate = null
             ) :
             base( name )
         {
-            CanEnterStateFunction = null;
-            CanExitStateFunction = null;
-            EnterStateFunction = enter_state_function;
-            BeginUpdateFunction = null;
-            UpdateFunction = update_function;
-            EndUpdateFunction = null;
-            ExitStateFunction = null;
+            CanEnterStateDelegate = null;
+            CanExitStateDelegate = null;
+            EnterStateDelegate = enter_state_delegate;
+            BeginUpdateDelegate = null;
+            UpdateDelegate = update_delegate;
+            EndUpdateDelegate = null;
+            ExitStateDelegate = null;
         }
 
         // ~~
 
         public DYNAMIC_STATE(
             string name,
-            ENTER_STATE_FUNCTION enter_state_function = null,
-            UPDATE_FUNCTION update_function = null,
-            EXIT_STATE_FUNCTION exit_state_function = null
+            ENTER_STATE_DELEGATE enter_state_delegate = null,
+            UPDATE_DELEGATE update_delegate = null,
+            EXIT_STATE_DELEGATE exit_state_delegate = null
             ) :
             base( name )
         {
-            CanEnterStateFunction = null;
-            CanExitStateFunction = null;
-            EnterStateFunction = enter_state_function;
-            BeginUpdateFunction = null;
-            UpdateFunction = update_function;
-            EndUpdateFunction = null;
-            ExitStateFunction = exit_state_function;
+            CanEnterStateDelegate = null;
+            CanExitStateDelegate = null;
+            EnterStateDelegate = enter_state_delegate;
+            BeginUpdateDelegate = null;
+            UpdateDelegate = update_delegate;
+            EndUpdateDelegate = null;
+            ExitStateDelegate = exit_state_delegate;
         }
 
         // ~~
 
         public DYNAMIC_STATE(
             string name,
-            ENTER_STATE_FUNCTION enter_state_function = null,
-            UPDATE_FUNCTION begin_update_function = null,
-            UPDATE_FUNCTION update_function = null,
-            UPDATE_FUNCTION end_update_function = null,
-            EXIT_STATE_FUNCTION exit_state_function = null
+            ENTER_STATE_DELEGATE enter_state_delegate = null,
+            UPDATE_DELEGATE begin_update_delegate = null,
+            UPDATE_DELEGATE update_delegate = null,
+            UPDATE_DELEGATE end_update_delegate = null,
+            EXIT_STATE_DELEGATE exit_state_delegate = null
             ) :
             base( name )
         {
-            CanEnterStateFunction = null;
-            CanExitStateFunction = null;
-            EnterStateFunction = enter_state_function;
-            BeginUpdateFunction = begin_update_function;
-            UpdateFunction = update_function;
-            EndUpdateFunction = end_update_function;
-            ExitStateFunction = exit_state_function;
+            CanEnterStateDelegate = null;
+            CanExitStateDelegate = null;
+            EnterStateDelegate = enter_state_delegate;
+            BeginUpdateDelegate = begin_update_delegate;
+            UpdateDelegate = update_delegate;
+            EndUpdateDelegate = end_update_delegate;
+            ExitStateDelegate = exit_state_delegate;
         }
 
         // ~~
 
         public DYNAMIC_STATE(
             string name,
-            CAN_ENTER_STATE_FUNCTION can_enter_state_function = null,
-            CAN_EXIT_STATE_FUNCTION can_exit_state_function = null,
-            ENTER_STATE_FUNCTION enter_state_function = null,
-            UPDATE_FUNCTION update_function = null,
-            EXIT_STATE_FUNCTION exit_state_function = null
+            CAN_ENTER_STATE_DELEGATE can_enter_state_delegate = null,
+            CAN_EXIT_STATE_DELEGATE can_exit_state_delegate = null,
+            ENTER_STATE_DELEGATE enter_state_delegate = null,
+            UPDATE_DELEGATE update_delegate = null,
+            EXIT_STATE_DELEGATE exit_state_delegate = null
             ) :
             base( name )
         {
-            CanEnterStateFunction = can_enter_state_function;
-            CanExitStateFunction = can_exit_state_function;
-            EnterStateFunction = enter_state_function;
-            BeginUpdateFunction = null;
-            UpdateFunction = update_function;
-            EndUpdateFunction = null;
-            ExitStateFunction = exit_state_function;
+            CanEnterStateDelegate = can_enter_state_delegate;
+            CanExitStateDelegate = can_exit_state_delegate;
+            EnterStateDelegate = enter_state_delegate;
+            BeginUpdateDelegate = null;
+            UpdateDelegate = update_delegate;
+            EndUpdateDelegate = null;
+            ExitStateDelegate = exit_state_delegate;
         }
 
         // ~~
 
         public DYNAMIC_STATE(
             string name,
-            CAN_ENTER_STATE_FUNCTION can_enter_state_function = null,
-            CAN_EXIT_STATE_FUNCTION can_exit_state_function = null,
-            ENTER_STATE_FUNCTION enter_state_function = null,
-            UPDATE_FUNCTION begin_update_function = null,
-            UPDATE_FUNCTION update_function = null,
-            UPDATE_FUNCTION end_update_function = null,
-            EXIT_STATE_FUNCTION exit_state_function = null
+            CAN_ENTER_STATE_DELEGATE can_enter_state_delegate = null,
+            CAN_EXIT_STATE_DELEGATE can_exit_state_delegate = null,
+            ENTER_STATE_DELEGATE enter_state_delegate = null,
+            UPDATE_DELEGATE begin_update_delegate = null,
+            UPDATE_DELEGATE update_delegate = null,
+            UPDATE_DELEGATE end_update_delegate = null,
+            EXIT_STATE_DELEGATE exit_state_delegate = null
             ) :
             base( name )
         {
-            CanEnterStateFunction = can_enter_state_function;
-            CanExitStateFunction = can_exit_state_function;
-            EnterStateFunction = enter_state_function;
-            BeginUpdateFunction = begin_update_function;
-            UpdateFunction = update_function;
-            EndUpdateFunction = end_update_function;
-            ExitStateFunction = exit_state_function;
+            CanEnterStateDelegate = can_enter_state_delegate;
+            CanExitStateDelegate = can_exit_state_delegate;
+            EnterStateDelegate = enter_state_delegate;
+            BeginUpdateDelegate = begin_update_delegate;
+            UpdateDelegate = update_delegate;
+            EndUpdateDelegate = end_update_delegate;
+            ExitStateDelegate = exit_state_delegate;
         }
 
         // -- INQUIRIES
@@ -235,9 +235,9 @@ namespace CORE
             {
                 return State.CanEnterState( old_state, new_state );
             }
-            else if ( CanEnterStateFunction != null )
+            else if ( CanEnterStateDelegate != null )
             {
-                return CanEnterStateFunction( old_state, new_state );
+                return CanEnterStateDelegate( old_state, new_state );
             }
             else
             {
@@ -256,9 +256,9 @@ namespace CORE
             {
                 return State.CanExitState( old_state, new_state );
             }
-            else if ( CanExitStateFunction != null )
+            else if ( CanExitStateDelegate != null )
             {
-                return CanExitStateFunction( old_state, new_state );
+                return CanExitStateDelegate( old_state, new_state );
             }
             else
             {
@@ -273,9 +273,9 @@ namespace CORE
             STATE new_state
             )
         {
-            if ( EnterStateFunction != null )
+            if ( EnterStateDelegate != null )
             {
-                EnterStateFunction( old_state, new_state );
+                EnterStateDelegate( old_state, new_state );
             }
 
             if ( State != null )
@@ -293,9 +293,9 @@ namespace CORE
             {
                 State.BeginUpdate();
             }
-            else if ( BeginUpdateFunction != null )
+            else if ( BeginUpdateDelegate != null )
             {
-                BeginUpdateFunction();
+                BeginUpdateDelegate();
             }
         }
 
@@ -308,9 +308,9 @@ namespace CORE
             {
                 State.Update();
             }
-            else if ( UpdateFunction != null )
+            else if ( UpdateDelegate != null )
             {
-                UpdateFunction();
+                UpdateDelegate();
             }
         }
 
@@ -323,9 +323,9 @@ namespace CORE
             {
                 State.EndUpdate();
             }
-            else if ( EndUpdateFunction != null )
+            else if ( EndUpdateDelegate != null )
             {
-                EndUpdateFunction();
+                EndUpdateDelegate();
             }
         }
 
@@ -341,9 +341,9 @@ namespace CORE
                 State.ExitState( old_state, new_state );
             }
 
-            if ( ExitStateFunction != null )
+            if ( ExitStateDelegate != null )
             {
-                ExitStateFunction( old_state, new_state);
+                ExitStateDelegate( old_state, new_state);
             }
         }
     }

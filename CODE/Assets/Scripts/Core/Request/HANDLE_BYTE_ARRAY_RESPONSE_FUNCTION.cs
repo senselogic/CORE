@@ -7,7 +7,7 @@ using CORE;
 
 namespace CORE
 {
-    public delegate void HANDLE_BYTE_ARRAY_RESPONSE_FUNCTION(
+    public delegate void HANDLE_BYTE_ARRAY_RESPONSE_DELEGATE(
         byte[] byte_array
         );
 }

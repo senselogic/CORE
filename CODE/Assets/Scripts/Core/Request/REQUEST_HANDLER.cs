@@ -17,8 +17,8 @@ namespace CORE
 
         public IEnumerator<UnityWebRequestAsyncOperation> DoSendGetByteArrayRequest(
             string url,
-            HANDLE_BYTE_ARRAY_RESPONSE_FUNCTION handle_byte_array_response_function,
-            HANDLE_ERROR_RESPONSE_FUNCTION handle_error_response_function = null
+            HANDLE_BYTE_ARRAY_RESPONSE_DELEGATE handle_byte_array_response_delegate,
+            HANDLE_ERROR_RESPONSE_DELEGATE handle_error_response_delegate = null
             )
         {
             UnityWebRequest
@@ -30,18 +30,18 @@ namespace CORE
             if ( unity_web_request.result == UnityWebRequest.Result.ConnectionError
                  || unity_web_request.result == UnityWebRequest.Result.ProtocolError )
             {
-                if ( handle_error_response_function == null )
+                if ( handle_error_response_delegate == null )
                 {
                     Debug.Log( unity_web_request.error );
                 }
                 else
                 {
-                    handle_error_response_function( unity_web_request.error );
+                    handle_error_response_delegate( unity_web_request.error );
                 }
             }
             else
             {
-                handle_byte_array_response_function( unity_web_request.downloadHandler.data );
+                handle_byte_array_response_delegate( unity_web_request.downloadHandler.data );
             }
         }
 
@@ -49,15 +49,15 @@ namespace CORE
 
         public void SendGetByteArrayRequest(
             string url,
-            HANDLE_BYTE_ARRAY_RESPONSE_FUNCTION handle_byte_array_response_function,
-            HANDLE_ERROR_RESPONSE_FUNCTION handle_error_response_function = null
+            HANDLE_BYTE_ARRAY_RESPONSE_DELEGATE handle_byte_array_response_delegate,
+            HANDLE_ERROR_RESPONSE_DELEGATE handle_error_response_delegate = null
             )
         {
             StartCoroutine(
                 DoSendGetByteArrayRequest(
                     url,
-                    handle_byte_array_response_function,
-                    handle_error_response_function
+                    handle_byte_array_response_delegate,
+                    handle_error_response_delegate
                     )
                 );
         }
@@ -66,8 +66,8 @@ namespace CORE
 
         public IEnumerator<UnityWebRequestAsyncOperation> DoSendGetTextRequest(
             string url,
-            HANDLE_TEXT_RESPONSE_FUNCTION handle_text_response_function,
-            HANDLE_ERROR_RESPONSE_FUNCTION handle_error_response_function
+            HANDLE_TEXT_RESPONSE_DELEGATE handle_text_response_delegate,
+            HANDLE_ERROR_RESPONSE_DELEGATE handle_error_response_delegate
             )
         {
             UnityWebRequest
@@ -79,18 +79,18 @@ namespace CORE
             if ( unity_web_request.result == UnityWebRequest.Result.ConnectionError
                  || unity_web_request.result == UnityWebRequest.Result.ProtocolError )
             {
-                if ( handle_error_response_function == null )
+                if ( handle_error_response_delegate == null )
                 {
                     Debug.Log( unity_web_request.error );
                 }
                 else
                 {
-                    handle_error_response_function( unity_web_request.error );
+                    handle_error_response_delegate( unity_web_request.error );
                 }
             }
             else
             {
-                handle_text_response_function( unity_web_request.downloadHandler.text );
+                handle_text_response_delegate( unity_web_request.downloadHandler.text );
             }
         }
 
@@ -98,15 +98,15 @@ namespace CORE
 
         public void SendGetTextRequest(
             string url,
-            HANDLE_TEXT_RESPONSE_FUNCTION handle_text_response_function,
-            HANDLE_ERROR_RESPONSE_FUNCTION handle_error_response_function
+            HANDLE_TEXT_RESPONSE_DELEGATE handle_text_response_delegate,
+            HANDLE_ERROR_RESPONSE_DELEGATE handle_error_response_delegate
             )
         {
             StartCoroutine(
                 DoSendGetTextRequest(
                     url,
-                    handle_text_response_function,
-                    handle_error_response_function
+                    handle_text_response_delegate,
+                    handle_error_response_delegate
                     )
                 );
         }
@@ -116,8 +116,8 @@ namespace CORE
         public IEnumerator<UnityWebRequestAsyncOperation> DoSendPostJsonTextRequest(
             string url,
             string json_text,
-            HANDLE_TEXT_RESPONSE_FUNCTION handle_text_response_function,
-            HANDLE_ERROR_RESPONSE_FUNCTION handle_error_response_function
+            HANDLE_TEXT_RESPONSE_DELEGATE handle_text_response_delegate,
+            HANDLE_ERROR_RESPONSE_DELEGATE handle_error_response_delegate
             )
         {
             byte[]
@@ -136,18 +136,18 @@ namespace CORE
             if ( unity_web_request.result == UnityWebRequest.Result.ConnectionError
                  || unity_web_request.result == UnityWebRequest.Result.ProtocolError )
             {
-                if ( handle_error_response_function == null )
+                if ( handle_error_response_delegate == null )
                 {
                     Debug.Log( unity_web_request.error );
                 }
                 else
                 {
-                    handle_error_response_function( unity_web_request.error );
+                    handle_error_response_delegate( unity_web_request.error );
                 }
             }
             else
             {
-                handle_text_response_function( unity_web_request.downloadHandler.text );
+                handle_text_response_delegate( unity_web_request.downloadHandler.text );
             }
         }
 
@@ -156,16 +156,16 @@ namespace CORE
         public void SendPostJsonTextRequest(
             string url,
             string json_text,
-            HANDLE_TEXT_RESPONSE_FUNCTION handle_text_response_function,
-            HANDLE_ERROR_RESPONSE_FUNCTION handle_error_response_function
+            HANDLE_TEXT_RESPONSE_DELEGATE handle_text_response_delegate,
+            HANDLE_ERROR_RESPONSE_DELEGATE handle_error_response_delegate
             )
         {
             StartCoroutine(
                 DoSendPostJsonTextRequest(
                     url,
                     json_text,
-                    handle_text_response_function,
-                    handle_error_response_function
+                    handle_text_response_delegate,
+                    handle_error_response_delegate
                     )
                 );
         }

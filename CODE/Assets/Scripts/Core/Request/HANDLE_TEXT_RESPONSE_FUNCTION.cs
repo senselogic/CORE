@@ -7,7 +7,7 @@ using CORE;
 
 namespace CORE
 {
-    public delegate void HANDLE_TEXT_RESPONSE_FUNCTION(
+    public delegate void HANDLE_TEXT_RESPONSE_DELEGATE(
         string text
         );
 }
