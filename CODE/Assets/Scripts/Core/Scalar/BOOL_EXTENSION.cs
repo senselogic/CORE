@@ -1,27 +1,20 @@
-// -- IMPORTS
-
-using CORE;
-
 // -- TYPES
 
-namespace CORE
+public static class BOOL_EXTENSION
 {
-    public static class BOOL_EXTENSION
-    {
-        // -- INQUIRIES
+    // -- INQUIRIES
 
-        public static string GetText(
-            this bool boolean
-            )
+    public static string GetText(
+        this bool boolean
+        )
+    {
+        if ( boolean )
         {
-            if ( boolean )
-            {
-                return "true";
-            }
-            else
-            {
-                return "false";
-            }
+            return "true";
+        }
+        else
+        {
+            return "false";
         }
     }
 }
