@@ -1,5 +1,7 @@
 // -- IMPORTS
 
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using CORE;
 
@@ -29,6 +31,10 @@ namespace CORE
             ColliderArray;
         public static RaycastHit[]
             RaycastHitArray;
+        public static string
+            LanguageCode = "en";
+        public static Dictionary<string, string>
+            TextBySlugDictionary = new Dictionary<string, string>();
 
         // -- INQUIRIES
 
@@ -63,7 +69,66 @@ namespace CORE
             return GetTimeStep( time_scale_index ) == 0.0f;
         }
 
+        // ~~
+
+        public static string GetTranslatedText(
+            string text
+            )
+        {
+            return text.GetTranslatedText( LanguageCode );
+        }
+
+        // ~~
+
+        public static string GetTranslatedTextBySlug(
+            string slug
+            )
+        {
+            return GetTranslatedText( TextBySlugDictionary[ slug ] );
+        }
+
+        // ~~
+
+        public static bool FindTranslatedTextBySlug(
+            out string translated_text,
+            string slug
+            )
+        {
+            if ( TextBySlugDictionary.ContainsKey( slug ) )
+            {
+                translated_text = GetTranslatedTextBySlug( slug );
+
+                return true;
+            }
+            else
+            {
+                Debug.LogWarning( "Translated text not found : " + slug );
+                translated_text = "";
+
+                return false;
+            }
+        }
+
         // -- OPERATIONS
+
+        public static void UpdateTexts(
+            )
+        {
+            TEXT_TRANSLATOR.UpdateTexts();
+        }
+
+        // ~~
+
+        public static void SetLanguageCode(
+            string language_code
+            )
+        {
+            LanguageCode = language_code;
+
+            UpdateTexts();
+        }
+
+        // ~~
 
         public void OnEnable(
             )
