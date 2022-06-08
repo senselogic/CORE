@@ -24,15 +24,6 @@ namespace CORE
 
         // -- OPERATIONS
 
-        public void Start(
-            )
-        {
-            Text_ = GetComponent<Text>();
-            TextMesh = GetComponent<TEXT_MESH>();
-        }
-
-        // ~~
-
         public void SetText(
             string text
             )
@@ -78,6 +69,15 @@ namespace CORE
             {
                 text_translator.UpdateText();
             }
+        }
+
+        // ~~
+
+        public void Awake(
+            )
+        {
+            Text_ = GetComponent<Text>();
+            TextMesh = GetComponent<TEXT_MESH>();
         }
 
         // ~~
