@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using CORE;
-using TEXT_MESH = TMPro.TextMeshProUGUI;
 
 // -- TYPES
 
