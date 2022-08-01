@@ -9,7 +9,7 @@ using CORE;
 
 namespace CORE
 {
-    public class BEAM : MonoBehaviour
+    public class VIRTUAL_BEAM : MonoBehaviour
     {
         // -- ATTRIBUTES
 
