@@ -132,6 +132,19 @@ namespace CORE
 
         // ~~
 
+        public void SendPointerUpEvent(
+            GameObject game_object
+            )
+        {
+            ExecuteEvents.Execute(
+                game_object,
+                new PointerEventData( EventSystem.current ),
+                ExecuteEvents.pointerUpHandler
+                );
+        }
+
+        // ~~
+
         public void SendEvents(
             )
         {
@@ -183,6 +196,11 @@ namespace CORE
                 if ( HandVirtualDevice.TriggerButton.IsJustPressed )
                 {
                     SendPointerClickEvent( contact_game_object );
+                }
+
+                if ( HandVirtualDevice.TriggerButton.IsJustReleased )
+                {
+                    SendPointerUpEvent( contact_game_object );
                 }
             }
 
