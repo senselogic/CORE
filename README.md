@@ -4,6 +4,8 @@
 
 Unity component library.
 
+[![](https://img.youtube.com/vi/xqOMwkJBuXE/0.jpg)](https://www.youtube.com/watch?v=xqOMwkJBuXE)
+
 ## Description
 
 Core provides reusable components for :
